@@ -1,33 +1,54 @@
 
+const categoriesList = document.querySelectorAll("#categories .item");
+console.log("Number of categories:",categoriesList.length);
 
-const customer = {
-    username: "Mango",
-    balance: 24000,
-    discount: 0.1,
-    orders: ["Burger", "Pizza", "Salad"],
-    // Change code below this line
-    getBalance() {
-      return this.balance;
-    },
-    getDiscount() {
-      return this.discount;
-    },
-    setDiscount(value) {
-      this.discount = value;
-    },
-    getOrders() {
-      return this.orders;
-    },
-    addOrder(cost, order) {
-      this.balance -= cost - cost * this.discount;
-      this.orders.push(order);
-    },
-    // Change code above this line
-  };
+
+categoriesList.forEach(categoriesList => {
+    const titel = categoriesList.querySelector("h2").textContent;
+    const elements = categoriesList.querySelectorAll("ul li").length;
+    console.log(`Category: ${titel}`);
+    console.log(`Category: ${elements}`);
+    
+    
+});
+
+const images = [
+      {
+        url: "https://images.pexels.com/photos/140134/pexels-photo-140134.jpeg?dpr=2&h=750&w=1260",
+        alt: "White and Black Long Fur Cat",
+      },
+      {
+        url: "https://images.pexels.com/photos/213399/pexels-photo-213399.jpeg?dpr=2&h=750&w=1260",
+        alt: "Orange and White Koi Fish Near Yellow Koi Fish",
+      },
+      {
+        url: "https://images.pexels.com/photos/219943/pexels-photo-219943.jpeg?dpr=2&h=750&w=1260",
+        alt: "Group of Horses Running",
+      },
+      {
+        url: "https://cdn.pixabay.com/photo/2019/05/17/09/27/the-alps-4209272_1280.jpg",
+        alt: "Alpine Spring Meadows",
+      },
+      {
+        url: "https://cdn.pixabay.com/photo/2019/05/16/21/10/landscape-4208255_1280.jpg",
+        alt: "Nature Landscape",
+      },
+      {
+        url: "https://cdn.pixabay.com/photo/2019/05/17/04/35/lighthouse-4208843_1280.jpg",
+        alt: "Lighthouse Coast Sea",
+      },
+    ];
+    const gallery = document.querySelector(".gallery");
+
   
-  customer.setDiscount(0.15);
-  console.log(customer.getDiscount()); // 0.15
-  customer.addOrder(5000, "Steak");
-  console.log(customer.getBalance()); // 19750
-  console.log(customer.getOrders()); // ["Burger", "Pizza", "Salad", "Steak"]
+    const createImages = images
+    .map(({url, alt}) => `
+            <li class="gallery-item">
+            <img scr="${url}" alt="${alt}" class="gallery-imges"/>
+        </li>`)
+        .join("");
+        
+    
+        gallery.insertAdjacentHTML("beforeend", createImages);
   
+        console.log(gallery);
